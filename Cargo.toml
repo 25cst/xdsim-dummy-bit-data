@@ -1,6 +1,7 @@
 [package]
-name = "xdsim-dummies-type"
+name = "xdsim-dummy-bit-type"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+libxdsim = { git = "https://github.com/25cst/libxdsim" }
