@@ -1,4 +1,4 @@
-use libxdsim::component::Type;
+use libxdsim::v0::component::Type;
 
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -8,13 +8,14 @@ impl Type for Bit {
     fn serialize(&self) -> Box<[u8]> {
         Box::new([if self.0 { 1 } else { 0 }])
     }
+
+    fn deserialize(bytes: Box<[u8]>) -> Self where Self: Sized {
+        assert_eq!(bytes.len(), 1);
+        Bit(bytes[0] != 0)
+    }
 }
 
-pub const fn id() -> (&'static str, u16, u16) {
-    ("dummy-bit", 0, 1)
-}
-
-pub fn deserialize(bytes: Box<[u8]>) -> Bit {
-    assert_eq!(bytes.len(), 1);
-    Bit(bytes[0] != 0)
+#[unsafe(no_mangle)]
+pub fn deserialize_boxed(bytes: Box<[u8]>) -> Box<dyn Type> {
+    Box::new(Bit::deserialize(bytes))
 }
