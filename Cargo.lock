@@ -5,6 +5,7 @@ version = 4
 [[package]]
 name = "libxdsim"
 version = "0.1.0"
+source = "git+https://github.com/25cst/libxdsim#cd153a242afa82cd2a3f6ee0869a755efca10ad8"
 
 [[package]]
 name = "xdsim-dummy-bit-data"
