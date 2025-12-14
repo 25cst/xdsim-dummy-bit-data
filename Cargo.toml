@@ -8,4 +8,7 @@ libxdsim = { git = "https://github.com/25cst/libxdsim" }
 # libxdsim = { path = "../libxdsim/" }
 
 [lib]
-crate-type = ["dylib"]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+export-abi = []

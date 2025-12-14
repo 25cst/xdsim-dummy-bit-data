@@ -22,12 +22,12 @@ impl Data for Bit {
     }
 }
 
-#[unsafe(no_mangle)]
+#[cfg_attr(feature = "export-abi", unsafe(no_mangle))]
 pub fn deserialize_boxed(bytes: Box<[u8]>) -> Box<dyn Data> {
     Box::new(Bit::deserialize(bytes))
 }
 
-#[unsafe(no_mangle)]
+#[cfg_attr(feature = "export-abi", unsafe(no_mangle))]
 pub fn package_definition() -> Box<dyn PackageDefinition> {
     Box::new(PackageDefinitionV0 {
         ident: package_ident_v0!("dummy-bit"),

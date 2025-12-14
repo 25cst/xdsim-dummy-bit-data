@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build
-        run: cargo build --release --verbose
+        run: cargo build --release --verbose -F export-abi
 
       # NEW STEP: Renames the file using the release tag (e.g., mylib-v1.0.0.so)
       - name: Rename Asset with Tag
